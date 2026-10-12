@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>EchoLock Appendix</title>
+<style>
+@page { size: 1280px 720px; margin: 0; }
+:root{
+  --ink:#0E1630; --ink2:#3A4460; --mute:#6A7288; --paper:#F7F5F0; --card:#FFFFFF; --line:#E2DED4; --line2:#D3CEC2;
+  --brand:#3F3BC4; --brand2:#2A2789; --brand-soft:#ECECFC; --navy:#0B1230; --navy2:#141C44;
+  --accent:#E8731C; --accent-soft:#FDF0E4;
+  --danger:#CF3434; --danger-soft:#FBEAEA; --safe:#0B8A5F; --safe-soft:#E3F4EC; --unk:#6F7891; --unk-soft:#ECEEF3;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#D9D6CE}
+body{font-family:"Segoe UI Variable Text","Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif;color:var(--ink);-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.slide{width:1280px;height:720px;position:relative;overflow:hidden;background:var(--paper);padding:38px 56px 0;margin:0 auto 24px;break-after:page;page-break-after:always}
+@media print{html,body{background:var(--paper)} .slide{margin:0}}
+.disp{font-family:"Segoe UI Variable Display","Segoe UI",system-ui,sans-serif}
+.kicker{display:flex;align-items:center;gap:10px;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--brand)}
+.kicker .num{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:8px;background:var(--brand);color:#fff;letter-spacing:0;font-size:12px}
+h2.t{font-family:"Segoe UI Variable Display","Segoe UI",sans-serif;font-size:31px;line-height:1.14;font-weight:700;letter-spacing:-.01em;margin-top:10px;max-width:1100px}
+h2.t em{font-style:normal;color:var(--brand)}
+h2.t .red{color:var(--danger)}
+.lead{font-size:15.5px;line-height:1.45;color:var(--ink2);margin-top:8px;max-width:1080px}
+.foot{position:absolute;left:56px;right:56px;bottom:16px;display:flex;justify-content:space-between;align-items:center;font-size:11px;color:var(--mute);border-top:1px solid var(--line);padding-top:8px}
+.foot b{color:var(--ink2);font-weight:700}
+.foot .src{max-width:900px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+.row{display:flex;gap:16px}
+.col{display:flex;flex-direction:column;gap:12px}
+.h4{font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
+.h3{font-size:16px;font-weight:700;line-height:1.25}
+.p{font-size:13.5px;line-height:1.45;color:var(--ink2)}
+.s{font-size:12px;line-height:1.4;color:var(--mute)}
+.chip{white-space:nowrap;display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:700;padding:4px 10px;border-radius:999px;background:var(--brand-soft);color:var(--brand2)}
+.chip.red{background:var(--danger-soft);color:var(--danger)} .chip.green{background:var(--safe-soft);color:var(--safe)} .chip.gray{background:var(--unk-soft);color:var(--unk)} .chip.org{background:var(--accent-soft);color:#B4540C}
+ul.ck{list-style:none;display:flex;flex-direction:column;gap:7px}
+ul.ck li{position:relative;padding-left:24px;font-size:13.5px;line-height:1.4;color:var(--ink2)}
+ul.ck li b{color:var(--ink)}
+ul.ck li::before{content:"";position:absolute;left:0;top:2px;width:16px;height:16px;border-radius:50%;background:var(--safe) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4.5 8.3l2.3 2.2 4.7-5' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/16px no-repeat}
+ul.ck.x li::before{background:var(--danger) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M5 5l6 6M11 5l-6 6' fill='none' stroke='white' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E") center/16px no-repeat}
+ul.dot{list-style:none;display:flex;flex-direction:column;gap:6px}
+ul.dot li{position:relative;padding-left:14px;font-size:13px;line-height:1.4;color:var(--ink2)}
+ul.dot li::before{content:"";position:absolute;left:0;top:7px;width:6px;height:6px;border-radius:50%;background:var(--brand)}
+ul.dot li b{color:var(--ink)}
+.callout{border-radius:12px;padding:12px 18px;background:var(--navy);color:#fff;font-size:15px;line-height:1.4;display:flex;align-items:center;gap:14px}
+.callout b{color:#FFC48F}
+.ico{width:22px;height:22px;flex:none;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.badge{display:inline-grid;place-items:center;width:40px;height:40px;border-radius:12px;background:var(--brand-soft);color:var(--brand);flex:none}
+.badge.red{background:var(--danger-soft);color:var(--danger)} .badge.green{background:var(--safe-soft);color:var(--safe)} .badge.gray{background:var(--unk-soft);color:var(--unk)} .badge.org{background:var(--accent-soft);color:var(--accent)}
+table.t{width:100%;border-collapse:separate;border-spacing:0;font-size:12.5px}
+table.t th{text-align:left;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);font-weight:800;padding:6px 10px;border-bottom:1.5px solid var(--line2)}
+table.t td{padding:7px 10px;border-bottom:1px solid var(--line);color:var(--ink2);vertical-align:top;line-height:1.35}
+table.t td b{color:var(--ink)}
+table.t.compact td{padding:5px 10px}
+.mono{font-family:"Cascadia Mono",Consolas,monospace}
+svg text{font-family:"Segoe UI Variable Text","Segoe UI",system-ui,sans-serif}
+.dark{background:var(--navy);color:#fff}
+.dark .foot{border-color:rgba(255,255,255,.12);color:#9AA3C7}
+.dark .foot b{color:#D8DCF2}
+.sec-tag{position:absolute;top:38px;right:56px;font-size:11px;font-weight:800;letter-spacing:.14em;color:var(--mute);text-transform:uppercase}
+.elwm{display:flex;align-items:flex-end;font-family:"Segoe UI Variable Display","Segoe UI",sans-serif;font-size:74px;font-weight:800;letter-spacing:-.035em;line-height:.9;margin-left:-6px}
+.elwm .arcs{width:.64em;height:.86em;margin-right:.06em;transform:translateY(-.02em)}
+.elwm .echo{background:linear-gradient(100deg,#8C7BFF 0%,#5B54F0 45%,#6C69E0 100%);-webkit-background-clip:text;background-clip:text;color:transparent;padding-right:.07em;margin-right:-.05em}
+.elwm .lk{display:inline-flex;align-items:flex-end;color:#fff}
+.elwm .lockglyph{width:.62em;height:.82em;margin:0 .015em 0 .03em}
+.arch .kicker{color:var(--accent)} .arch .kicker .num{background:var(--accent)}
+.elwm.light .lk{color:#0E1630}
+.elwm.light .echo{background:linear-gradient(100deg,#8C7BFF 0%,#5B54F0 45%,#3F3BC4 100%);-webkit-background-clip:text;background-clip:text}
+</style>
+<style>
+.ev{display:grid;gap:14px;margin-top:14px}
+.ev .card{padding:12px 15px}
+.ev .h4{color:var(--brand);margin-bottom:6px}
+.stat{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-top:14px}
+.stat .card{padding:10px 12px}
+.stat b{display:block;font-size:24px;font-weight:800;color:var(--ink);font-family:"Segoe UI Variable Display","Segoe UI",sans-serif;line-height:1.05}
+.stat span{font-size:11.5px;color:var(--mute);line-height:1.3;display:block;margin-top:3px}
+.fx{display:grid;grid-template-columns:1fr 1fr;gap:6px 18px}
+.fx div{font-size:11.4px;line-height:1.36;color:var(--ink2);padding-left:22px;position:relative}
+.fx div i{position:absolute;left:0;top:0;font-style:normal;font-weight:800;color:#fff;background:var(--accent);border-radius:5px;width:16px;height:16px;display:grid;place-items:center;font-size:10px}
+.fx div b{color:var(--ink)}
+table.rt{width:100%;border-collapse:collapse;font-size:11.2px}
+table.rt th{font-size:10px;text-transform:uppercase;letter-spacing:.05em;color:var(--mute);text-align:left;font-weight:800;padding:4px 5px;border-bottom:1.5px solid var(--line2);line-height:1.2}
+table.rt td{padding:5px 4px;border-bottom:1px solid var(--line);color:var(--ink2);white-space:nowrap}
+table.rt td b{color:var(--ink)}
+table.rt .ci{color:var(--mute);font-size:10.5px}
+.sw{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:6px;vertical-align:0}
+</style><style>
+.dis p{font-size:10.9px;line-height:1.38;color:var(--ink2);margin-bottom:6px}
+.dis p b{color:var(--ink)}
+.stat .card{padding:8px 11px} .stat b{font-size:21px} .stat span{font-size:10.8px}
+table.rt td{padding:4px 4px}
+</style>
+</head>
+<body>
+<section class="slide">
+  <div class="kicker"><span class="num" style="width:auto;padding:0 8px">A</span>Appendix · evidence and disclosures</div>
+  <h2 class="t" style="font-size:27px">What we built and measured, and what we used.</h2>
+  <div class="lead" style="margin-top:4px;font-size:14px">Code, team recordings, per-clip scores and the prototype: <a href="https://github.com/tusharsinghbisht/raksham-iitd-ps1" style="color:var(--brand);font-weight:700;text-decoration:none">github.com/tusharsinghbisht/raksham-iitd-ps1</a></div>
+  <div class="stat" style="margin-top:10px">
+    <div class="card"><b>1,727</b><span>clips scored: 842 real, 768 cloned (Hindi), 117 team</span></div>
+    <div class="card"><b>110</b><span>speakers: 38 real, 84 cloned, 2 teammates</span></div>
+    <div class="card"><b>6</b><span>phone channels per clip, 10,362 scores in total</span></div>
+    <div class="card"><b>22 ms</b><span>per 4 s window, laptop GPU (RTX 3050); 299 ms on CPU</span></div>
+    <div class="card"><b>26 / 26</b><span>prototype tests pass: confirm, replay, tamper, expiry, review</span></div>
+    <div class="card"><b>94.4 M</b><span>weights loaded by our own PyTorch loader, strict check</span></div>
+  </div>
+  <div class="ev" style="grid-template-columns:minmax(0,1.32fr) minmax(0,1fr);margin-top:12px;gap:12px">
+    <div class="col" style="gap:12px">
+      <div class="card">
+        <div class="h4">Detector results · Hindi test set, 960 clips, 70 speakers, speaker-disjoint</div>
+        <table class="rt">
+          <tr><th>Channel</th><th>EER call-level [95% CI]</th><th>τ (dev)</th><th>Detected @τ</th><th>False alarm @τ</th><th>FreeVC / XTTS</th><th>Team false alarm</th></tr>
+          <tr><td><span class="sw" style="background:#0B8A5F"></span><b>Clean 16 kHz</b></td><td><b>1.6%</b> <span class="ci">[0.8%–2.7%]</span></td><td>+1.13</td><td>95.8%</td><td>0.7%</td><td>100% / 91%</td><td>1.7%</td></tr><tr><td><span class="sw" style="background:#2F9BB7"></span><b>8 kHz narrowband</b></td><td><b>3.6%</b> <span class="ci">[2.1%–5.1%]</span></td><td>-1.25</td><td>95.8%</td><td>2.1%</td><td>100% / 90%</td><td>8.5%</td></tr><tr><td><span class="sw" style="background:#3F3BC4"></span><b>G.711</b></td><td><b>3.4%</b> <span class="ci">[2.1%–5.0%]</span></td><td>-2.27</td><td>96.6%</td><td>3.9%</td><td>100% / 93%</td><td>16.2%</td></tr><tr><td><span class="sw" style="background:#8C7BFF"></span><b>Opus 12k</b></td><td><b>5.9%</b> <span class="ci">[3.5%–8.5%]</span></td><td>-1.57</td><td>93.9%</td><td>5.3%</td><td>100% / 87%</td><td>17.1%</td></tr><tr><td><span class="sw" style="background:#E8731C"></span><b>AMR-NB 12.2k</b></td><td><b>8.5%</b> <span class="ci">[5.4%–11.8%]</span></td><td>+0.58</td><td>83.8%</td><td>3.5%</td><td>90% / 76%</td><td>4.3%</td></tr><tr><td><span class="sw" style="background:#CF3434"></span><b>G.711 + 3% loss + noise</b></td><td><b>21.7%</b> <span class="ci">[17.0%–25.7%]</span></td><td>+0.43</td><td>26.0%</td><td>0.7%</td><td>28% / 24%</td><td>7.7%</td></tr>
+        </table>
+        <div class="s" style="margin-top:5px">Kathbath real vs IndicSynth clones. τ fixed on a dev split at 1% false alarms, never tuned on test. Same-person check (14 speakers): 2.3% clean, 2.3% G.711.</div>
+      </div>
+      <div class="card">
+        <div class="h4">What we learned · problems we fixed</div>
+        <div class="fx">
+          <div><i>1</i><b>Loss + noise breaks detection</b> (26% caught). Poor audio → UNKNOWN; app confirmation never relies on the score.</div>
+          <div><i>2</i><b>τ shifts -2.27 → +1.13</b> by channel, so it's set per codec, and re-set on each bank's calls in shadow mode (our voices: 16% false alarms on G.711).</div>
+          <div><i>3</i><b>fairseq won't install</b> on Windows, so we rewrote wav2vec 2.0 in PyTorch. Excluded FLEURS and MLAAD (in the model's training set).</div>
+          <div><i>4</i><b>IndicSynth shards are sorted</b> (first pull: 5 XTTS speakers), so we sampled at random offsets → 84. Split by speaker ID across both datasets.</div>
+        </div>
+      </div>
+    </div>
+    <div class="card dis">
+      <div class="h4">Disclosures</div>
+      <p><b>AI-generated content:</b> Claude (Anthropic, via Claude Code) helped write and lay out this deck, the logo, the recording script and our evaluation code. An earlier plan was drafted with Claude; a first review and the workflow prototype with an OpenAI coding assistant. The team reviewed all of it and owns every claim. All diagrams are inline SVG/HTML; no generated images, stock photos or templates.</p>
+      <p><b>Model:</b> NII wav2vec-small-anti-deepfake, Hugging Face rev 9a13264, on facebook/wav2vec2-base. CC BY-NC-SA 4.0, research only. Published weights, no fine-tuning. MMS-1B and AASIST-L are cited only, not run.</p>
+      <p><b>Datasets:</b> Kathbath Hindi (AI4Bharat, CC BY 4.0), real speech. IndicSynth Hindi (ACL 2025, CC BY-NC 4.0), XTTS-v2 and FreeVC clones. Recordings of 2 team members, released with their consent at github.com/tusharsinghbisht/raksham-iitd-ps1. No bank, customer or platform data. We have cloned no one yet; demo clones will use consenting teammates only.</p>
+      <p><b>Assets &amp; software:</b> IIT Delhi emblem and Amazon logo (Wikimedia Commons), trademarks of their owners, used only to name the organisers. Segoe UI, PyTorch, SciPy, FFmpeg, Hugging Face Hub, Microsoft Edge.</p>
+      <p><b>Sources:</b> McAfee, <i>The Artificial Imposter</i> (2023); Android CAPTURE_AUDIO_OUTPUT docs and Google Play policy (May 2022); RBI Authentication Directions 2025; DPDP Act 2023; TRAI 1600-series; NII model card and arXiv:2506.21090; RFC 7866 (SIPREC).</p>
+      <p><b>Status:</b> slide 8, A2 τ values and this page are measured by us (12 Oct 2026). Slide 7 chart, app screens, evidence pack and cost are illustrative; prototype voice scores are simulated.</p>
+    </div>
+  </div>
+</section>
+</body>
+</html>

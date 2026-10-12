@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>EchoLock Logo</title>
+<style>
+body{margin:0;padding:30px;background:transparent;font-family:"Segoe UI Variable Display","Segoe UI",system-ui,sans-serif;display:flex;flex-direction:column;gap:30px;align-items:flex-start}
+.logo{display:inline-flex;flex-direction:column;align-items:flex-start;padding:46px 64px 40px 56px;border-radius:28px}
+.logo.dark{background:#0B1230}
+.logo.light{background:transparent}
+.wm{display:flex;align-items:flex-end;font-size:132px;font-weight:800;letter-spacing:-.035em;line-height:.9}
+/* "Echo": gradient fill, with sound-wave arcs radiating from the E */
+.echo{position:relative;display:inline-block;padding-right:.02em}
+.echo .main{position:relative;z-index:3;background:linear-gradient(100deg,#8C7BFF 0%,#5B54F0 45%,#3F3BC4 100%);-webkit-background-clip:text;background-clip:text;color:transparent;padding-right:.07em;margin-right:-.05em}
+.arcs{width:.64em;height:.86em;margin-right:.06em;transform:translateY(-.02em)}
+/* "Lock": solid, with a padlock standing in for the "o" */
+.lock{display:inline-flex;align-items:flex-end}
+.lock .lockglyph{width:.62em;height:.82em;margin:0 .015em 0 .03em;transform:translateY(.005em)}
+.dark .lock{color:#FFFFFF}
+.light .lock{color:#0E1630}
+.tag{margin-top:22px;font-family:"Segoe UI Variable Text","Segoe UI",sans-serif;font-size:21px;font-weight:600;letter-spacing:.32em;text-transform:uppercase}
+.dark .tag{color:#9AA3C7}
+.light .tag{color:#6A7288}
+</style>
+</head>
+<body>
+<template id="wm">
+  <div class="wm">
+    <svg class="arcs" viewBox="-22 0 92 120" aria-hidden="true"><g fill="none" stroke="#6C69E0" stroke-width="7" stroke-linecap="round"><path d="M58 36a30 30 0 000 48" opacity=".95"/><path d="M42 20a52 52 0 000 80" opacity=".55"/><path d="M26 6a72 72 0 000 108" opacity=".25"/></g></svg><span class="echo"><span class="main">Echo</span></span>
+    <span class="lock">L<svg class="lockglyph" viewBox="0 0 62 82" aria-hidden="true">
+      <defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F59E4B"/><stop offset="1" stop-color="#E8731C"/></linearGradient></defs>
+      <path d="M15 38V25a16 16 0 0132 0v13" fill="none" stroke="currentColor" stroke-width="8.5" stroke-linecap="round"/>
+      <rect x="2" y="34" width="58" height="47" rx="12" fill="url(#lg)"/>
+      <g stroke="#FFFFFF" stroke-width="4.2" stroke-linecap="round"><path d="M15 57.5v0M23 51v13M31 45v25M39 50v15M47 57.5v0"/></g>
+    </svg>ck</span>
+  </div>
+</template>
+<div class="logo dark" id="logo-dark"></div>
+<div class="logo light" id="logo-light"></div>
+<script>
+for (const el of document.querySelectorAll('.logo')) {
+  el.append(document.getElementById('wm').content.cloneNode(true));
+  const t = document.createElement('div'); t.className = 'tag';
+  t.innerHTML = 'A copied voice can’t unlock it';
+  el.append(t);
+}
+</script>
+</body>
+</html>

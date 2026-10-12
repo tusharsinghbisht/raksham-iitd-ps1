@@ -1,0 +1,652 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EchoLock Pitch Deck</title>
+<style>
+@page { size: 1280px 720px; margin: 0; }
+:root{
+  --ink:#0E1630; --ink2:#3A4460; --mute:#6A7288; --paper:#F7F5F0; --card:#FFFFFF; --line:#E2DED4; --line2:#D3CEC2;
+  --brand:#3F3BC4; --brand2:#2A2789; --brand-soft:#ECECFC; --navy:#0B1230; --navy2:#141C44;
+  --accent:#E8731C; --accent-soft:#FDF0E4;
+  --danger:#CF3434; --danger-soft:#FBEAEA; --safe:#0B8A5F; --safe-soft:#E3F4EC; --unk:#6F7891; --unk-soft:#ECEEF3;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#D9D6CE}
+body{font-family:"Segoe UI Variable Text","Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif;color:var(--ink);-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.slide{width:1280px;height:720px;position:relative;overflow:hidden;background:var(--paper);padding:38px 56px 0;margin:0 auto 24px;break-after:page;page-break-after:always}
+@media print{html,body{background:var(--paper)} .slide{margin:0}}
+.disp{font-family:"Segoe UI Variable Display","Segoe UI",system-ui,sans-serif}
+.kicker{display:flex;align-items:center;gap:10px;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--brand)}
+.kicker .num{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:8px;background:var(--brand);color:#fff;letter-spacing:0;font-size:12px}
+h2.t{font-family:"Segoe UI Variable Display","Segoe UI",sans-serif;font-size:31px;line-height:1.14;font-weight:700;letter-spacing:-.01em;margin-top:10px;max-width:1100px}
+h2.t em{font-style:normal;color:var(--brand)}
+h2.t .red{color:var(--danger)}
+.lead{font-size:15.5px;line-height:1.45;color:var(--ink2);margin-top:8px;max-width:1080px}
+.foot{position:absolute;left:56px;right:56px;bottom:16px;display:flex;justify-content:space-between;align-items:center;font-size:11px;color:var(--mute);border-top:1px solid var(--line);padding-top:8px}
+.foot b{color:var(--ink2);font-weight:700}
+.foot .src{max-width:900px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+.row{display:flex;gap:16px}
+.col{display:flex;flex-direction:column;gap:12px}
+.h4{font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
+.h3{font-size:16px;font-weight:700;line-height:1.25}
+.p{font-size:13.5px;line-height:1.45;color:var(--ink2)}
+.s{font-size:12px;line-height:1.4;color:var(--mute)}
+.chip{white-space:nowrap;display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:700;padding:4px 10px;border-radius:999px;background:var(--brand-soft);color:var(--brand2)}
+.chip.red{background:var(--danger-soft);color:var(--danger)} .chip.green{background:var(--safe-soft);color:var(--safe)} .chip.gray{background:var(--unk-soft);color:var(--unk)} .chip.org{background:var(--accent-soft);color:#B4540C}
+ul.ck{list-style:none;display:flex;flex-direction:column;gap:7px}
+ul.ck li{position:relative;padding-left:24px;font-size:13.5px;line-height:1.4;color:var(--ink2)}
+ul.ck li b{color:var(--ink)}
+ul.ck li::before{content:"";position:absolute;left:0;top:2px;width:16px;height:16px;border-radius:50%;background:var(--safe) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4.5 8.3l2.3 2.2 4.7-5' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/16px no-repeat}
+ul.ck.x li::before{background:var(--danger) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M5 5l6 6M11 5l-6 6' fill='none' stroke='white' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E") center/16px no-repeat}
+ul.dot{list-style:none;display:flex;flex-direction:column;gap:6px}
+ul.dot li{position:relative;padding-left:14px;font-size:13px;line-height:1.4;color:var(--ink2)}
+ul.dot li::before{content:"";position:absolute;left:0;top:7px;width:6px;height:6px;border-radius:50%;background:var(--brand)}
+ul.dot li b{color:var(--ink)}
+.callout{border-radius:12px;padding:12px 18px;background:var(--navy);color:#fff;font-size:15px;line-height:1.4;display:flex;align-items:center;gap:14px}
+.callout b{color:#FFC48F}
+.ico{width:22px;height:22px;flex:none;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.badge{display:inline-grid;place-items:center;width:40px;height:40px;border-radius:12px;background:var(--brand-soft);color:var(--brand);flex:none}
+.badge.red{background:var(--danger-soft);color:var(--danger)} .badge.green{background:var(--safe-soft);color:var(--safe)} .badge.gray{background:var(--unk-soft);color:var(--unk)} .badge.org{background:var(--accent-soft);color:var(--accent)}
+table.t{width:100%;border-collapse:separate;border-spacing:0;font-size:12.5px}
+table.t th{text-align:left;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);font-weight:800;padding:6px 10px;border-bottom:1.5px solid var(--line2)}
+table.t td{padding:7px 10px;border-bottom:1px solid var(--line);color:var(--ink2);vertical-align:top;line-height:1.35}
+table.t td b{color:var(--ink)}
+table.t.compact td{padding:5px 10px}
+.mono{font-family:"Cascadia Mono",Consolas,monospace}
+svg text{font-family:"Segoe UI Variable Text","Segoe UI",system-ui,sans-serif}
+.dark{background:var(--navy);color:#fff}
+.dark .foot{border-color:rgba(255,255,255,.12);color:#9AA3C7}
+.dark .foot b{color:#D8DCF2}
+.sec-tag{position:absolute;top:38px;right:56px;font-size:11px;font-weight:800;letter-spacing:.14em;color:var(--mute);text-transform:uppercase}
+.elwm{display:flex;align-items:flex-end;font-family:"Segoe UI Variable Display","Segoe UI",sans-serif;font-size:74px;font-weight:800;letter-spacing:-.035em;line-height:.9;margin-left:-6px}
+.elwm .arcs{width:.64em;height:.86em;margin-right:.06em;transform:translateY(-.02em)}
+.elwm .echo{background:linear-gradient(100deg,#8C7BFF 0%,#5B54F0 45%,#6C69E0 100%);-webkit-background-clip:text;background-clip:text;color:transparent;padding-right:.07em;margin-right:-.05em}
+.elwm .lk{display:inline-flex;align-items:flex-end;color:#fff}
+.elwm .lockglyph{width:.62em;height:.82em;margin:0 .015em 0 .03em}
+.arch .kicker{color:var(--accent)} .arch .kicker .num{background:var(--accent)}
+.elwm.light .lk{color:#0E1630}
+.elwm.light .echo{background:linear-gradient(100deg,#8C7BFF 0%,#5B54F0 45%,#3F3BC4 100%);-webkit-background-clip:text;background-clip:text}
+</style>
+</head>
+<body>
+
+<!-- ICON SPRITE -->
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <symbol id="i-phone" viewBox="0 0 24 24"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M10.5 18.5h3"/></symbol>
+    <symbol id="i-headset" viewBox="0 0 24 24"><path d="M4 14v-2a8 8 0 0116 0v2"/><rect x="3" y="13" width="4" height="6" rx="1.5"/><rect x="17" y="13" width="4" height="6" rx="1.5"/><path d="M19 19c0 1.5-2 2.5-5 2.5"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect x="4.5" y="10.5" width="15" height="10.5" rx="2.5"/><path d="M8 10.5V7.5a4 4 0 018 0v3"/><path d="M12 14.5v3"/></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4.5-6 8-6s7 2 8 6"/></symbol>
+    <symbol id="i-wave" viewBox="0 0 24 24"><path d="M3 12h2M7 8v8M11 5v14M15 9v6M19 7v10M21 12h0"/></symbol>
+    <symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 3l9.5 17h-19z"/><path d="M12 10v4.5M12 17.5v.1"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 12.3l2.7 2.6L16.2 9"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9 9l6 6M15 9l-6 6"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/></symbol>
+    <symbol id="i-key" viewBox="0 0 24 24"><circle cx="8" cy="15" r="4.5"/><path d="M11.5 12L20 3.5M17 6.5l2.5 2.5M14.5 9l2 2"/></symbol>
+    <symbol id="i-db" viewBox="0 0 24 24"><ellipse cx="12" cy="5.5" rx="7.5" ry="2.8"/><path d="M4.5 5.5v13c0 1.5 3.4 2.8 7.5 2.8s7.5-1.3 7.5-2.8v-13M4.5 12c0 1.5 3.4 2.8 7.5 2.8s7.5-1.3 7.5-2.8"/></symbol>
+    <symbol id="i-eye-off" viewBox="0 0 24 24"><path d="M3 3l18 18M10.6 6.1A9.5 9.5 0 0112 6c5 0 8.5 4 9.5 6-.5 1-1.4 2.3-2.7 3.5M6.6 7.6C4.6 8.9 3.2 10.7 2.5 12c1 2 4.5 6 9.5 6 1.6 0 3-.4 4.3-1"/><path d="M9.9 9.9a3 3 0 004.2 4.2"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></symbol>
+    <symbol id="i-scale" viewBox="0 0 24 24"><path d="M12 3v18M7 21h10M5 7h14M5 7l-3 7a3 3 0 006 0zM19 7l-3 7a3 3 0 006 0z"/></symbol>
+    <symbol id="i-building" viewBox="0 0 24 24"><path d="M3 21h18M4 10h16M12 3l9 5H3zM6 10v8M10 10v8M14 10v8M18 10v8"/></symbol>
+    <symbol id="i-sim" viewBox="0 0 24 24"><path d="M7 2.5h7l4 4v15H7z"/><rect x="9.5" y="11" width="6" height="7" rx="1"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/></symbol>
+    <symbol id="i-flag" viewBox="0 0 24 24"><path d="M5 21V4M5 4h11l-2 4 2 4H5"/></symbol>
+    <symbol id="i-cpu" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2"/><rect x="9.5" y="9.5" width="5" height="5"/><path d="M9 2.5v3M15 2.5v3M9 18.5v3M15 18.5v3M2.5 9h3M2.5 15h3M18.5 9h3M18.5 15h3"/></symbol>
+    <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#3A4460"/></marker>
+    <marker id="ahb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#3F3BC4"/></marker>
+    <marker id="ahr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#CF3434"/></marker>
+    <marker id="ahg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#0B8A5F"/></marker>
+    <marker id="ahm" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#6F7891"/></marker>
+    <marker id="ahw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#9AA3C7"/></marker>
+  </defs>
+</svg>
+
+<!-- ================= PITCH 01 · TITLE ================= -->
+<section class="slide dark" style="padding:0">
+  <svg width="1280" height="720" style="position:absolute;inset:0" aria-hidden="true">
+    <defs>
+      <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#3F3BC4" stop-opacity=".55"/><stop offset="1" stop-color="#3F3BC4" stop-opacity="0"/></radialGradient>
+    </defs>
+    <circle cx="975" cy="350" r="330" fill="url(#glow)"/>
+    <g fill="none" stroke="#6C69E0" stroke-opacity=".35">
+      <circle cx="975" cy="335" r="120"/><circle cx="975" cy="335" r="175" stroke-opacity=".25"/><circle cx="975" cy="335" r="235" stroke-opacity=".16"/><circle cx="975" cy="335" r="300" stroke-opacity=".09"/>
+    </g>
+    <!-- cloned waveform coming from left -->
+    <g stroke="#FF6B6B" stroke-width="4" stroke-linecap="round">
+      <path d="M690 335v0M706 320v30M722 300v70M738 312v46M754 290v90M770 305v60M786 318v34M802 296v78M818 326v18"/>
+    </g>
+    <text x="686" y="420" fill="#FF9C9C" font-size="13" font-weight="700" letter-spacing="1.5">CLONED VOICE</text>
+    <path d="M830 335h40" stroke="#FF6B6B" stroke-width="2.5" stroke-dasharray="4 5"/>
+    <!-- lock -->
+    <g transform="translate(915,250)">
+      <path d="M28 70V48a32 32 0 0164 0v22" fill="none" stroke="#C9CBFF" stroke-width="12" stroke-linecap="round"/>
+      <rect x="0" y="66" width="120" height="104" rx="22" fill="#FFFFFF"/>
+      <g stroke="#3F3BC4" stroke-width="5" stroke-linecap="round"><path d="M30 118v0M43 106v24M56 96v44M69 104v28M82 112v12M95 118v0"/></g>
+      <circle cx="104" cy="152" r="20" fill="#CF3434" stroke="#0B1230" stroke-width="4"/>
+      <path d="M96 144l16 16M112 144l-16 16" stroke="#fff" stroke-width="3.5" stroke-linecap="round"/>
+    </g>
+    <!-- phone confirm card -->
+    <g transform="translate(1062,438)">
+      <rect x="0" y="0" width="176" height="150" rx="16" fill="#141C44" stroke="#3A438A"/>
+      <text x="14" y="24" fill="#9AA3C7" font-size="10" font-weight="700" letter-spacing="1">REGISTERED BANK APP</text>
+      <text x="14" y="46" fill="#fff" font-size="12.5" font-weight="700">Change registered</text>
+      <text x="14" y="62" fill="#fff" font-size="12.5" font-weight="700">mobile number?</text>
+      <text x="14" y="82" fill="#C9CBFF" font-size="11.5">••3210 → 98765 48876</text>
+      <rect x="14" y="98" width="70" height="30" rx="8" fill="#CF3434"/><text x="49" y="118" fill="#fff" font-size="12" font-weight="700" text-anchor="middle">Reject</text>
+      <rect x="92" y="98" width="70" height="30" rx="8" fill="none" stroke="#5A63A8"/><text x="127" y="118" fill="#C9CBFF" font-size="12" font-weight="700" text-anchor="middle">Approve</text>
+    </g>
+    <path d="M1010 425 C1030 450 1040 460 1060 470" fill="none" stroke="#9AA3C7" stroke-width="1.6" stroke-dasharray="3 4" marker-end="url(#ahw)"/>
+  </svg>
+  <div style="position:relative;padding:54px 0 0 64px;width:640px">
+    <div style="font-size:12px;font-weight:700;letter-spacing:.16em;color:#9AA3C7">RAKSHAM · AMAZON AI CYBER SECURITY HACKATHON · IIT DELHI</div>
+    <div style="display:flex;gap:8px;margin-top:16px">
+      <span class="chip" style="background:#262E66;color:#C9CBFF">PS-01 · Voice Cloning Fraud Detection</span>
+      <span class="chip" style="background:#3B2A1E;color:#FFC48F">Bank contact centres</span>
+    </div>
+    <div class="elwm" style="margin-top:30px">
+      <svg class="arcs" viewBox="-22 0 92 120" aria-hidden="true"><g fill="none" stroke="#6C69E0" stroke-width="7" stroke-linecap="round"><path d="M58 36a30 30 0 000 48" opacity=".95"/><path d="M42 20a52 52 0 000 80" opacity=".55"/><path d="M26 6a72 72 0 000 108" opacity=".25"/></g></svg><span class="echo">Echo</span><span class="lk">L<svg class="lockglyph" viewBox="0 0 62 82" aria-hidden="true"><defs><linearGradient id="elg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F59E4B"/><stop offset="1" stop-color="#E8731C"/></linearGradient></defs><path d="M15 38V25a16 16 0 0132 0v13" fill="none" stroke="#fff" stroke-width="8.5" stroke-linecap="round"/><rect x="2" y="34" width="58" height="47" rx="12" fill="url(#elg)"/><g stroke="#fff" stroke-width="4.2" stroke-linecap="round"><path d="M15 57.5v0M23 51v13M31 45v25M39 50v15M47 57.5v0"/></g></svg>ck</span>
+    </div>
+    <div class="disp" style="font-size:34px;line-height:1.16;font-weight:700;margin-top:26px">A copied voice can't unlock<br>a bank account.</div>
+    <p style="font-size:16.5px;line-height:1.5;color:#C3C8E4;margin-top:18px;max-width:590px">EchoLock runs inside a bank's contact centre. It flags cloned speech on the bank's own call line, and holds every sensitive account change until the real customer approves <b style="color:#fff">that exact change</b> in their registered bank app. A stolen voice alone can't take over the account.</p>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:26px;max-width:600px">
+      <div style="border:1px solid #2C3570;border-radius:12px;padding:10px 12px"><div style="font-size:10.5px;letter-spacing:.12em;color:#9AA3C7;font-weight:700">PRIMARY USER</div><div style="font-size:13.5px;font-weight:700;margin-top:4px">Contact-centre agent &amp; fraud analyst</div></div>
+      <div style="border:1px solid #2C3570;border-radius:12px;padding:10px 12px"><div style="font-size:10.5px;letter-spacing:.12em;color:#9AA3C7;font-weight:700">HARMFUL MOMENT</div><div style="font-size:13.5px;font-weight:700;margin-top:4px">Caller asks to change account data</div></div>
+      <div style="border:1px solid #2C3570;border-radius:12px;padding:10px 12px"><div style="font-size:10.5px;letter-spacing:.12em;color:#9AA3C7;font-weight:700">OWNER</div><div style="font-size:13.5px;font-weight:700;margin-top:4px">Bank contact-centre ops + fraud risk</div></div>
+    </div>
+  </div>
+  <div style="position:absolute;top:40px;right:56px;display:flex;align-items:center;gap:16px;background:#fff;border-radius:14px;padding:10px 18px"><img src="logo/partners/iit-delhi.svg" alt="IIT Delhi" style="height:52px;display:block"><span style="width:1px;align-self:stretch;background:#D3CEC2"></span><img src="logo/partners/amazon.svg" alt="Amazon" style="height:30px;display:block;margin-top:9px"></div>
+  <div style="position:absolute;left:64px;bottom:34px;display:flex;align-items:center;gap:16px;border:1px solid #2C3570;border-radius:14px;padding:12px 18px;background:rgba(20,28,68,.6)">
+    <div><div style="font-size:10.5px;letter-spacing:.14em;color:#9AA3C7;font-weight:700">TEAM</div><div class="disp" style="font-size:20px;font-weight:800;color:#fff;margin-top:2px">RapidActionForce</div></div>
+    <div style="width:1px;align-self:stretch;background:#2C3570"></div>
+    <div><div style="font-size:13px;font-weight:700;color:#FFC48F">Delhi Technological University (DTU)</div><div style="font-size:13px;color:#C3C8E4;margin-top:3px">Tushar Singh Bisht · Reedhan Garg · Shobhit Pandey · Shikhar Singh</div></div>
+    <div style="width:1px;align-self:stretch;background:#2C3570"></div>
+    <div><div style="font-size:10.5px;letter-spacing:.14em;color:#9AA3C7;font-weight:700">CODE, DATA &amp; RESULTS</div><a href="https://github.com/tusharsinghbisht/raksham-iitd-ps1" style="display:block;font-size:13.5px;font-weight:700;color:#C9CBFF;margin-top:4px;text-decoration:none">github.com/tusharsinghbisht/raksham-iitd-ps1</a></div>
+  </div>
+</section>
+<!-- ================= PITCH 02 · PROBLEM ================= -->
+<section class="slide">
+  <div class="kicker"><span class="num">02</span>The problem</div>
+  <h2 class="t">Your voice has become a <em>copyable password</em>, and banks still trust it on the phone.</h2>
+  <div class="row" style="margin-top:20px;gap:20px">
+    <div class="col" style="width:330px;gap:12px">
+      <div class="card" style="display:flex;gap:14px;align-items:center;padding:14px 16px">
+        <div class="disp" style="font-size:40px;font-weight:800;color:var(--danger);line-height:1;width:118px;white-space:nowrap;flex:none">3 sec</div>
+        <div class="p">of audio was enough for an <b>85% voice match</b> with free cloning tools, in McAfee's tests.</div>
+      </div>
+      <div class="card" style="display:flex;gap:14px;align-items:center;padding:14px 16px">
+        <div class="disp" style="font-size:40px;font-weight:800;color:var(--danger);line-height:1;width:118px;white-space:nowrap;flex:none">47%</div>
+        <div class="p">of Indian adults surveyed had faced an AI voice scam or knew someone who had. That's <b>nearly 2× the global 25%</b>.</div>
+      </div>
+      <div class="card" style="display:flex;gap:14px;align-items:center;padding:14px 16px">
+        <div class="disp" style="font-size:40px;font-weight:800;color:var(--danger);line-height:1;width:118px;white-space:nowrap;flex:none">83%</div>
+        <div class="p">of Indian victims in that survey <b>lost money</b>.</div>
+      </div>
+      <div class="s">Source: McAfee, <i>The Artificial Imposter</i> (2023), survey of 7,054 adults in 7 countries.</div>
+    </div>
+    <div class="col" style="flex:1;gap:14px">
+      <div class="card" style="padding:16px 18px 10px">
+        <div class="h4">How a voice gets stolen</div>
+        <svg viewBox="0 0 770 150" width="100%" height="150" aria-label="Voice theft flow">
+          <g font-size="12" fill="#3A4460">
+            <g transform="translate(0,8)">
+              <rect x="0" y="0" width="180" height="30" rx="8" fill="#F3F1EC"/><text x="12" y="20">▶ Instagram reels &amp; YouTube</text>
+              <rect x="0" y="36" width="180" height="30" rx="8" fill="#F3F1EC"/><text x="12" y="56">🎙 Forwarded voice notes</text>
+              <rect x="0" y="72" width="180" height="30" rx="8" fill="#F3F1EC"/><text x="12" y="92">☎ "Wrong number" calls</text>
+              <rect x="0" y="108" width="180" height="30" rx="8" fill="#F3F1EC"/><text x="12" y="128">🎤 Interviews &amp; meetings</text>
+            </g>
+          </g>
+          <path d="M188 77 H246" stroke="#3A4460" stroke-width="1.8" marker-end="url(#ah)"/>
+          <g transform="translate(252,30)">
+            <rect width="200" height="94" rx="14" fill="#FBEAEA" stroke="#F0C2C2"/>
+            <text x="100" y="30" text-anchor="middle" font-size="14" font-weight="700" fill="#0E1630">Open-source cloning</text>
+            <text x="100" y="50" text-anchor="middle" font-size="12" fill="#3A4460">TTS or real-time voice</text>
+            <text x="100" y="66" text-anchor="middle" font-size="12" fill="#3A4460">conversion. Free, runs on a</text>
+            <text x="100" y="82" text-anchor="middle" font-size="12" fill="#3A4460">laptop in minutes.</text>
+          </g>
+          <path d="M458 77 H502" stroke="#3A4460" stroke-width="1.8" marker-end="url(#ah)"/>
+          <g transform="translate(508,30)">
+            <rect width="260" height="94" rx="14" fill="#0B1230"/>
+            <g stroke="#FF6B6B" stroke-width="3" stroke-linecap="round" transform="translate(18,24)"><path d="M0 22v0M9 12v20M18 4v36M27 10v24M36 16v12M45 6v32M54 14v16M63 20v4"/></g>
+            <text x="96" y="38" font-size="13.5" font-weight="700" fill="#fff">Sounds like you</text>
+            <text x="96" y="56" font-size="12" fill="#C3C8E4">on an 8 kHz phone line,</text>
+            <text x="96" y="72" font-size="12" fill="#C3C8E4">where the flaws are</text>
+            <text x="96" y="88" font-size="12" fill="#C3C8E4">hardest to hear</text>
+          </g>
+        </svg>
+      </div>
+      <div>
+        <div class="h4" style="margin-bottom:8px">What a phone-banking call relies on today, and why each one fails</div>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px">
+          <div class="card" style="padding:12px 14px"><div style="display:flex;gap:8px;align-items:center"><span class="badge red" style="width:30px;height:30px;border-radius:9px"><svg class="ico" style="width:17px;height:17px"><use href="#i-phone"/></svg></span><b style="font-size:13.5px">Caller ID</b></div><div class="s" style="margin-top:6px">Can be spoofed with VoIP. A familiar number is not the customer.</div></div>
+          <div class="card" style="padding:12px 14px"><div style="display:flex;gap:8px;align-items:center"><span class="badge red" style="width:30px;height:30px;border-radius:9px"><svg class="ico" style="width:17px;height:17px"><use href="#i-key"/></svg></span><b style="font-size:13.5px">Security Qs</b></div><div class="s" style="margin-top:6px">DOB, address, PAN and recent payments leak through breaches and social media.</div></div>
+          <div class="card" style="padding:12px 14px"><div style="display:flex;gap:8px;align-items:center"><span class="badge red" style="width:30px;height:30px;border-radius:9px"><svg class="ico" style="width:17px;height:17px"><use href="#i-wave"/></svg></span><b style="font-size:13.5px">The voice</b></div><div class="s" style="margin-top:6px">A clone is made to sound like the account holder, and can beat voice-ID checks too.</div></div>
+          <div class="card" style="padding:12px 14px"><div style="display:flex;gap:8px;align-items:center"><span class="badge red" style="width:30px;height:30px;border-radius:9px"><svg class="ico" style="width:17px;height:17px"><use href="#i-headset"/></svg></span><b style="font-size:13.5px">Agent instinct</b></div><div class="s" style="margin-top:6px">Agents handle hundreds of calls under time targets. Nobody can hear a good clone.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="callout" style="margin-top:16px"><svg class="ico" style="color:#FFC48F"><use href="#i-alert"/></svg><div>The phone channel is where banks <b>trust a voice the most</b> and <b>check it the least</b>. That's the gap EchoLock closes.</div></div>
+</section>
+<!-- ================= PITCH 03 · THREAT SCENARIO ================= -->
+<section class="slide">
+  <div class="kicker"><span class="num">03</span>Threat scenario · user · harm</div>
+  <h2 class="t">The attack we stop: a fraudster <span class="red">clones the customer's voice</span> and calls the bank to <em>change their account details</em>.</h2>
+  <div class="card" style="margin-top:18px;padding:16px 18px">
+    <svg viewBox="0 0 1150 150" width="100%" height="150" aria-label="Account takeover timeline">
+      <line x1="40" y1="44" x2="1110" y2="44" stroke="#E2DED4" stroke-width="3"/>
+      <line x1="40" y1="44" x2="900" y2="44" stroke="#CF3434" stroke-width="3" stroke-dasharray="2 7" stroke-linecap="round"/>
+      <g font-size="12.5">
+        <g transform="translate(40,0)"><circle cx="40" cy="44" r="24" fill="#FBEAEA"/><text x="40" y="50" text-anchor="middle" font-size="17" font-weight="800" fill="#CF3434">1</text>
+          <text x="0" y="92" font-weight="700" font-size="14" fill="#0E1630">Harvest the voice</text><text x="0" y="111" fill="#3A4460">30 s of the customer's</text><text x="0" y="127" fill="#3A4460">speech from a reel or a call</text></g>
+        <g transform="translate(260,0)"><circle cx="40" cy="44" r="24" fill="#FBEAEA"/><text x="40" y="50" text-anchor="middle" font-size="17" font-weight="800" fill="#CF3434">2</text>
+          <text x="0" y="92" font-weight="700" font-size="14" fill="#0E1630">Clone it</text><text x="0" y="111" fill="#3A4460">TTS or live voice conversion,</text><text x="0" y="127" fill="#3A4460">plus leaked KYC answers</text></g>
+        <g transform="translate(480,0)"><circle cx="40" cy="44" r="24" fill="#FBEAEA"/><text x="40" y="50" text-anchor="middle" font-size="17" font-weight="800" fill="#CF3434">3</text>
+          <text x="0" y="92" font-weight="700" font-size="14" fill="#0E1630">Call the bank as them</text><text x="0" y="111" fill="#3A4460">Spoofed caller ID; passes</text><text x="0" y="127" fill="#3A4460">security questions easily</text></g>
+        <g transform="translate(700,0)"><circle cx="40" cy="44" r="28" fill="#CF3434"/><text x="40" y="51" text-anchor="middle" font-size="18" font-weight="800" fill="#fff">4</text>
+          <text x="0" y="92" font-weight="800" font-size="14" fill="#CF3434">Change the data</text><text x="0" y="111" fill="#3A4460">"I lost my phone, please</text><text x="0" y="127" fill="#3A4460">update my mobile number"</text></g>
+        <g transform="translate(920,0)"><circle cx="40" cy="44" r="24" fill="#0B1230"/><text x="40" y="50" text-anchor="middle" font-size="17" font-weight="800" fill="#fff">5</text>
+          <text x="0" y="92" font-weight="700" font-size="14" fill="#0E1630">Take over the account</text><text x="0" y="111" fill="#3A4460">OTPs now reach the fraudster.</text><text x="0" y="127" fill="#3A4460">Reset, re-bind, drain.</text></g>
+      </g>
+      <g transform="translate(700,0)"><rect x="-6" y="0" width="0" height="0"/></g>
+      <text x="740" y="10" text-anchor="middle" font-size="11" font-weight="800" fill="#3F3BC4" letter-spacing="1.2">▼ ECHOLOCK INTERVENES HERE</text>
+    </svg>
+  </div>
+  <div class="row" style="margin-top:14px;gap:16px">
+    <div class="card" style="flex:1.25;padding:14px 18px">
+      <div class="h4">Why changing data is the real prize</div>
+      <svg viewBox="0 0 520 170" width="100%" height="170" aria-label="Registered mobile controls">
+        <rect x="0" y="58" width="150" height="56" rx="12" fill="#CF3434"/>
+        <text x="75" y="82" text-anchor="middle" font-size="13" font-weight="800" fill="#fff">Registered mobile</text>
+        <text x="75" y="100" text-anchor="middle" font-size="12" fill="#FFE1E1">changed by the clone</text>
+        <g stroke="#CF3434" stroke-width="1.6" fill="none" marker-end="url(#ahr)">
+          <path d="M150 86 C200 86 200 18 250 18"/><path d="M150 86 C200 86 200 64 250 64"/><path d="M150 86 C200 86 200 108 250 108"/><path d="M150 86 C200 86 200 152 250 152"/>
+        </g>
+        <g font-size="12.5" fill="#3A4460">
+          <rect x="256" y="4" width="260" height="28" rx="8" fill="#FBEAEA"/><text x="268" y="23"><tspan font-weight="700" fill="#0E1630">OTPs</tspan> for payments &amp; net-banking login</text>
+          <rect x="256" y="50" width="260" height="28" rx="8" fill="#FBEAEA"/><text x="268" y="69"><tspan font-weight="700" fill="#0E1630">UPI / app</tspan> device binding on a new SIM</text>
+          <rect x="256" y="94" width="260" height="28" rx="8" fill="#FBEAEA"/><text x="268" y="113"><tspan font-weight="700" fill="#0E1630">Password &amp; PIN</tspan> reset flows</text>
+          <rect x="256" y="138" width="260" height="28" rx="8" fill="#FBEAEA"/><text x="268" y="157"><tspan font-weight="700" fill="#0E1630">Fraud alerts</tspan> go to the fraudster, not you</text>
+        </g>
+      </svg>
+      <div class="s" style="margin-top:2px">Change one field and the attacker gets every control built on it. The real customer often learns days later.</div>
+    </div>
+    <div class="card" style="flex:1;padding:14px 18px">
+      <div class="h4">Sensitive requests we hold</div>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:10px">
+        <span class="chip red">Registered mobile / email change</span><span class="chip red">New device or SIM binding</span><span class="chip red">Transfer / UPI limit increase</span><span class="chip red">Address change + card reissue</span><span class="chip red">Add beneficiary / nominee</span><span class="chip red">Unblock card or account</span>
+      </div>
+      <div class="h4" style="margin-top:14px">Who's involved</div>
+      <ul class="dot" style="margin-top:8px">
+        <li><b>Primary user: contact-centre agent.</b> Has to decide while the caller is on the line.</li>
+        <li><b>Fraud analyst.</b> Reviews flagged cases and needs evidence, not a bare score.</li>
+        <li><b>Protected person: the account holder.</b> Not on the call and has no idea it's happening.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+<!-- ================= PITCH 04 · WHY BANK NOT PHONE ================= -->
+<section class="slide">
+  <div class="kicker"><span class="num">04</span>Where to defend</div>
+  <h2 class="t">Why we guard the <em>bank's contact centre</em>, not the customer's phone.</h2>
+  <div class="card" style="margin-top:16px;padding:12px 18px;background:#FBFAF7">
+    <svg viewBox="0 0 1150 118" width="100%" height="118" aria-label="Call topology">
+      <!-- attacker -->
+      <g transform="translate(10,14)"><rect width="190" height="62" rx="12" fill="#FBEAEA" stroke="#F0C2C2"/>
+        <g transform="translate(14,16)" stroke="#CF3434" fill="none" stroke-width="1.8"><use href="#i-user" width="30" height="30"/></g>
+        <text x="54" y="28" font-size="13.5" font-weight="700" fill="#0E1630">Fraudster</text><text x="54" y="46" font-size="12" fill="#CF3434">with the cloned voice</text></g>
+      <path d="M205 45 H455" stroke="#CF3434" stroke-width="2.2" marker-end="url(#ahr)"/>
+      <text x="330" y="36" text-anchor="middle" font-size="12" font-weight="700" fill="#CF3434">the attack call goes to the BANK</text>
+      <!-- bank -->
+      <g transform="translate(462,4)"><rect width="250" height="82" rx="14" fill="#0B1230"/>
+        <g transform="translate(16,24)" stroke="#C9CBFF" fill="none" stroke-width="1.8"><use href="#i-headset" width="32" height="32"/></g>
+        <text x="62" y="32" font-size="14" font-weight="700" fill="#fff">Bank contact centre</text><text x="62" y="52" font-size="12" fill="#C9CBFF">bank owns this audio + action</text>
+        <rect x="62" y="60" width="118" height="17" rx="8.5" fill="#3F3BC4"/><text x="121" y="72.5" text-anchor="middle" font-size="10.5" font-weight="800" fill="#fff" letter-spacing=".8">ECHOLOCK HERE</text></g>
+      <path d="M717 45 H935" stroke="#0B8A5F" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#ahg)"/>
+      <text x="826" y="36" text-anchor="middle" font-size="12" font-weight="700" fill="#0B8A5F">approval via registered app</text>
+      <!-- customer -->
+      <g transform="translate(942,14)"><rect width="198" height="62" rx="12" fill="#E3F4EC" stroke="#BFE3D2"/>
+        <g transform="translate(14,16)" stroke="#0B8A5F" fill="none" stroke-width="1.8"><use href="#i-phone" width="30" height="30"/></g>
+        <text x="52" y="28" font-size="13.5" font-weight="700" fill="#0E1630">Real customer</text><text x="52" y="46" font-size="12" fill="#3A4460">not on this call at all</text></g>
+      <text x="575" y="110" text-anchor="middle" font-size="12.5" fill="#3A4460">The customer's phone <tspan font-weight="700" fill="#CF3434">never hears the clone</tspan>, so a phone app has nothing to analyse. The bank does.</text>
+    </svg>
+  </div>
+  <div class="row" style="margin-top:14px;gap:16px">
+    <div class="card" style="flex:1;border-top:4px solid var(--danger);padding:14px 18px">
+      <div style="display:flex;align-items:center;gap:10px"><span class="badge red"><svg class="ico"><use href="#i-phone"/></svg></span><div><div class="h3">Detecting on the customer's phone</div><div class="s">Not possible, and wouldn't help with this attack</div></div></div>
+      <ul class="ck x" style="margin-top:12px">
+        <li><b>Third-party apps can't capture call audio.</b> Android limits <span class="mono" style="font-size:12px">VOICE_CALL</span> capture to system apps (<span class="mono" style="font-size:12px">CAPTURE_AUDIO_OUTPUT</span>). Google Play banned Accessibility-API call recording in May 2022, and iOS has no call-audio API.</li>
+        <li><b>Wrong place for this attack.</b> The fraudster calls the bank, not the victim.</li>
+        <li><b>Privacy red flag.</b> Recording or uploading every personal call clashes with the DPDP Act and Play policy.</li>
+        <li><b>Coverage gaps.</b> Protection would depend on millions of installs, phone models and OS versions. Feature-phone users get nothing.</li>
+      </ul>
+    </div>
+    <div class="card" style="flex:1;border-top:4px solid var(--safe);padding:14px 18px">
+      <div style="display:flex;align-items:center;gap:10px"><span class="badge green"><svg class="ico"><use href="#i-building"/></svg></span><div><div class="h3">Detecting at the bank contact centre</div><div class="s">Legitimate audio, the right moment, one integration</div></div></div>
+      <ul class="ck" style="margin-top:12px">
+        <li><b>The bank owns the call line.</b> Audio already passes through its IVR and agent systems under existing call-recording notices. No phone permissions needed.</li>
+        <li><b>The bank owns the action.</b> The change request lands here, so we can hold it <i>before</i> it runs.</li>
+        <li><b>The bank owns the duty.</b> RBI's 2025 authentication directions allow risk-based additional checks. That's our hook.</li>
+        <li><b>One deployment covers every customer</b>, on any phone, with an independent registered channel back to the real person.</li>
+      </ul>
+    </div>
+  </div>
+  <div style="margin-top:12px;display:flex;gap:12px;align-items:flex-start;background:var(--brand-soft);border-radius:12px;padding:10px 16px">
+    <svg class="ico" style="color:var(--brand);margin-top:1px"><use href="#i-search"/></svg>
+    <div class="p" style="font-size:13px"><b style="color:var(--ink)">What about fake "bank official" calls to customers?</b> That's a different attack: the fraudster calls the customer, and phone apps still can't hear the call. It's better solved with verified-caller signals (TRAI 1600-series numbers, an in-app "Is my bank calling me?"). We list it as a future extension, not our PS-01 scope.</div>
+  </div>
+</section>
+<!-- ================= PITCH 05 · BEFORE / AFTER ================= -->
+<section class="slide">
+  <div class="kicker"><span class="num">05</span>Current journey → EchoLock journey</div>
+  <h2 class="t">Today a voice that sounds right gets the change. With EchoLock, <em>only the real customer can approve it</em>.</h2>
+  <div style="margin-top:18px" class="card">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px"><span class="chip red">TODAY</span><span class="s">A cloned caller asks to change the registered mobile number</span></div>
+    <svg viewBox="0 0 1130 92" width="100%" height="92" aria-label="Current journey">
+      <g font-size="12.5" fill="#3A4460">
+        <g><rect x="0" y="6" width="196" height="72" rx="12" fill="#F7F5F0" stroke="#E2DED4"/><text x="14" y="32" font-weight="700" fill="#0E1630">Cloned voice calls</text><text x="14" y="50">spoofed caller ID,</text><text x="14" y="66">calm and convincing</text></g>
+        <g transform="translate(233,0)"><rect y="6" width="196" height="72" rx="12" fill="#F7F5F0" stroke="#E2DED4"/><text x="14" y="32" font-weight="700" fill="#0E1630">Agent asks security Qs</text><text x="14" y="50">DOB, address,</text><text x="14" y="66">last transaction</text></g>
+        <g transform="translate(466,0)"><rect y="6" width="196" height="72" rx="12" fill="#FBEAEA" stroke="#F0C2C2"/><text x="14" y="32" font-weight="700" fill="#CF3434">Clone answers them all</text><text x="14" y="50">leaked data plus a</text><text x="14" y="66">voice that sounds right</text></g>
+        <g transform="translate(699,0)"><rect y="6" width="196" height="72" rx="12" fill="#FBEAEA" stroke="#F0C2C2"/><text x="14" y="32" font-weight="700" fill="#CF3434">Agent updates mobile</text><text x="14" y="50">no signal that anything</text><text x="14" y="66">is wrong</text></g>
+        <g transform="translate(932,0)"><rect y="6" width="196" height="72" rx="12" fill="#CF3434"/><text x="14" y="32" font-weight="700" fill="#fff">Account taken over</text><text x="14" y="50" fill="#FFE1E1">OTPs redirected,</text><text x="14" y="66" fill="#FFE1E1">savings drained</text></g>
+      </g>
+      <g stroke="#3A4460" stroke-width="1.6" marker-end="url(#ah)"><path d="M199 42h30"/><path d="M432 42h30"/><path d="M665 42h30"/><path d="M898 42h30"/></g>
+    </svg>
+  </div>
+  <div style="margin-top:12px;border-color:#C9CBFF" class="card">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px"><span class="chip">WITH ECHOLOCK</span><span class="s">Same call, but nothing changes without independent approval</span></div>
+    <svg viewBox="0 0 1130 92" width="100%" height="92" aria-label="EchoLock journey">
+      <g font-size="12.5" fill="#3A4460">
+        <g><rect x="0" y="6" width="196" height="72" rx="12" fill="#F7F5F0" stroke="#E2DED4"/><text x="14" y="32" font-weight="700" fill="#0E1630">Same cloned call</text><text x="14" y="50">EchoLock listens on the</text><text x="14" y="66">bank's line, no extra step</text></g>
+        <g transform="translate(233,0)"><rect y="6" width="196" height="72" rx="12" fill="#ECECFC" stroke="#C9CBFF"/><text x="14" y="32" font-weight="700" fill="#2A2789">Agent opens request</text><text x="14" y="50">"Change mobile" goes</text><text x="14" y="66">on hold automatically</text></g>
+        <g transform="translate(466,0)"><rect y="6" width="196" height="72" rx="12" fill="#ECECFC" stroke="#C9CBFF"/><text x="14" y="32" font-weight="700" fill="#2A2789">Voice risk ELEVATED</text><text x="14" y="50">agent sees: "possible</text><text x="14" y="66">impersonation, keep pending"</text></g>
+        <g transform="translate(699,0)"><rect y="6" width="196" height="72" rx="12" fill="#ECECFC" stroke="#C9CBFF"/><text x="14" y="32" font-weight="700" fill="#2A2789">Exact change → app</text><text x="14" y="50">real customer sees the full</text><text x="14" y="66">new no. "98765 48876?"</text></g>
+        <g transform="translate(932,0)"><rect y="6" width="196" height="72" rx="12" fill="#0B8A5F"/><text x="14" y="32" font-weight="700" fill="#fff">"I never asked" → Reject</text><text x="14" y="50" fill="#DDF5EA">request cancelled,</text><text x="14" y="66" fill="#DDF5EA">case sent to analyst</text></g>
+      </g>
+      <g stroke="#3F3BC4" stroke-width="1.6" marker-end="url(#ahb)"><path d="M199 42h30"/><path d="M432 42h30"/><path d="M665 42h30"/><path d="M898 42h30"/></g>
+    </svg>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:12px">
+    <div class="card" style="padding:12px 14px"><div style="display:flex;gap:8px;align-items:center"><span class="badge green" style="width:30px;height:30px;border-radius:9px"><svg class="ico" style="width:17px;height:17px"><use href="#i-user"/></svg></span><b style="font-size:14px">Customer</b></div><div class="s" style="margin-top:6px;color:var(--ink2)">Stays safe even if a clone fools the agent. A genuine request costs one tap in an app they already use.</div></div>
+    <div class="card" style="padding:12px 14px"><div style="display:flex;gap:8px;align-items:center"><span class="badge" style="width:30px;height:30px;border-radius:9px"><svg class="ico" style="width:17px;height:17px"><use href="#i-headset"/></svg></span><b style="font-size:14px">Agent</b></div><div class="s" style="margin-top:6px;color:var(--ink2)">Gets a plain next step instead of a raw "87% fake" score. No need to accuse the caller.</div></div>
+    <div class="card" style="padding:12px 14px"><div style="display:flex;gap:8px;align-items:center"><span class="badge org" style="width:30px;height:30px;border-radius:9px"><svg class="ico" style="width:17px;height:17px"><use href="#i-search"/></svg></span><b style="font-size:14px">Fraud analyst</b></div><div class="s" style="margin-top:6px;color:var(--ink2)">Gets a ranked case with reason codes, score timeline and approval status, ready for a callback.</div></div>
+    <div class="card" style="padding:12px 14px"><div style="display:flex;gap:8px;align-items:center"><span class="badge gray" style="width:30px;height:30px;border-radius:9px"><svg class="ico" style="width:17px;height:17px"><use href="#i-building"/></svg></span><b style="font-size:14px">Bank</b></div><div class="s" style="margin-top:6px;color:var(--ink2)">Fewer account takeovers, an audit trail per change, and checks in line with RBI's risk-based guidance.</div></div>
+  </div>
+</section>
+<!-- ================= PITCH 06 · SOLUTION ================= -->
+<section class="slide">
+  <div class="kicker"><span class="num">06</span>Solution &amp; differentiation</div>
+  <h2 class="t">Three layers: <em>Detect, Confirm, Review</em>. If one fails, the others still stop the attack.</h2>
+  <div class="row" style="margin-top:18px;gap:14px">
+    <div class="card" style="flex:1;border-top:4px solid var(--brand)">
+      <div style="display:flex;gap:10px;align-items:center"><span class="badge"><svg class="ico"><use href="#i-wave"/></svg></span><div><div class="s" style="font-weight:800;letter-spacing:.1em">LAYER 1</div><div class="h3">Detect cloned speech</div></div></div>
+      <ul class="dot" style="margin-top:10px">
+        <li>A <b>pretrained self-supervised anti-spoofing model</b> (wav2vec 2.0, NII AntiDeepfake) runs on the bank's call audio.</li>
+        <li>Scores <b>4-second speech windows</b>, tuned for narrowband phone audio.</li>
+        <li>Returns an honest <b>UNKNOWN</b> when audio is too short or too noisy. It never guesses "genuine".</li>
+      </ul>
+    </div>
+    <div class="card" style="flex:1;border-top:4px solid var(--safe)">
+      <div style="display:flex;gap:10px;align-items:center"><span class="badge green"><svg class="ico"><use href="#i-lock"/></svg></span><div><div class="s" style="font-weight:800;letter-spacing:.1em">LAYER 2</div><div class="h3">Confirm the exact change</div></div></div>
+      <ul class="dot" style="margin-top:10px">
+        <li>Every sensitive change is sent to the customer's <b>already-registered bank app</b>.</li>
+        <li>The app shows the <b>exact action</b>, including the <b>full new number</b> ("••3210 → 98765 48876"). Signed, single-use, 60 s expiry.</li>
+        <li>A clone can copy a voice. It can't copy a <b>registered device plus biometric unlock</b>.</li>
+      </ul>
+    </div>
+    <div class="card" style="flex:1;border-top:4px solid var(--accent)">
+      <div style="display:flex;gap:10px;align-items:center"><span class="badge org"><svg class="ico"><use href="#i-search"/></svg></span><div><div class="s" style="font-weight:800;letter-spacing:.1em">LAYER 3</div><div class="h3">Human review with evidence</div></div></div>
+      <ul class="dot" style="margin-top:10px">
+        <li>A flagged voice opens a <b>case even after an app approval</b>. Contact and limit changes also wait a <b>24-hour cooling-off</b>, so a coached customer has time to cancel.</li>
+        <li>The analyst sees reason codes, a score timeline and approval status, then <b>calls back on the registered number</b>.</li>
+        <li>The <b>bank keeps final authority</b>. The model never runs an action itself.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="row" style="margin-top:14px;gap:14px">
+    <div class="card" style="flex:1.2;padding:14px 18px">
+      <div class="h4" style="margin-bottom:6px">Built to survive detector failure</div>
+      <table class="t compact">
+        <tr><th>Situation</th><th>Voice layer</th><th>App layer</th><th>Outcome</th></tr>
+        <tr><td><b>Clone, detected</b></td><td><span class="chip red">Elevated</span></td><td>Real customer rejects</td><td><b style="color:var(--safe)">Blocked + analyst case</b></td></tr>
+        <tr><td><b>Clone, missed</b></td><td><span class="chip green">Not elevated</span></td><td>No approval arrives</td><td><b style="color:var(--safe)">Change never happens</b></td></tr>
+        <tr><td><b>Genuine customer</b></td><td><span class="chip green">Not elevated</span></td><td>Approves in ~10 s</td><td><b>Proceeds to bank checks</b></td></tr>
+        <tr><td><b>Genuine, uses TTS aid</b></td><td><span class="chip red">Elevated</span></td><td>Approves</td><td><b>Quick review, no penalty</b></td></tr>
+        <tr><td><b>Real customer, coached</b></td><td><span class="chip green">Not elevated</span></td><td>Approves under pressure</td><td><b>24 h hold + alerts; one tap cancels</b></td></tr>
+      </table>
+    </div>
+    <div class="card" style="flex:1;padding:14px 18px;background:#FBFAF7">
+      <div class="h4" style="margin-bottom:10px">How we differ</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:12.5px;line-height:1.35">
+        <div style="font-weight:800;color:var(--mute);font-size:11px;letter-spacing:.08em">TYPICAL DETECTOR</div><div style="font-weight:800;color:var(--brand);font-size:11px;letter-spacing:.08em">ECHOLOCK</div>
+        <div class="p" style="font-size:12.5px">"Is this voice fake?"</div><div class="p" style="font-size:12.5px;color:var(--ink)"><b>"Did the account holder approve this exact change?"</b></div>
+        <div class="p" style="font-size:12.5px">Score → auto-block</div><div class="p" style="font-size:12.5px;color:var(--ink)">Score → more checks, never an accusation</div>
+        <div class="p" style="font-size:12.5px">Tested on clean lab clips</div><div class="p" style="font-size:12.5px;color:var(--ink)">Tested on phone-codec, Indic speech</div>
+        <div class="p" style="font-size:12.5px">One model failure = loss</div><div class="p" style="font-size:12.5px;color:var(--ink)">Missed clone still can't change data</div>
+        <div class="p" style="font-size:12.5px">Penalises TTS users</div><div class="p" style="font-size:12.5px;color:var(--ink)">Same non-voice path for everyone</div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ================= PITCH 07 · DETECTION LOGIC ================= -->
+<section class="slide">
+  <div class="kicker"><span class="num">07</span>Core detection &amp; decision logic</div>
+  <h2 class="t">Rolling evidence from one strong model, gated by quality, with a <em>decision policy that can't fail open</em>.</h2>
+  <div class="card" style="margin-top:12px;padding:10px 16px">
+    <svg viewBox="0 0 1150 104" width="100%" height="104" aria-label="Detection pipeline">
+      <g font-size="12">
+        <g><rect x="0" y="10" width="160" height="70" rx="12" fill="#0B1230"/><text x="14" y="36" font-weight="700" fill="#fff" font-size="13">Bank call leg</text><text x="14" y="54" fill="#C9CBFF">8 kHz PCM, forked</text><text x="14" y="69" fill="#C9CBFF">via SIPREC / WebRTC</text></g>
+        <g transform="translate(190,0)"><rect y="10" width="170" height="70" rx="12" fill="#fff" stroke="#D3CEC2"/><text x="14" y="36" font-weight="700" fill="#0E1630" font-size="13">Speech &amp; quality gate</text><text x="14" y="54" fill="#3A4460">VAD, clipping, dropouts,</text><text x="14" y="69" fill="#3A4460">≥4 s voiced audio</text></g>
+        <g transform="translate(390,0)"><rect y="10" width="180" height="70" rx="12" fill="#ECECFC" stroke="#C9CBFF"/><text x="14" y="36" font-weight="700" fill="#2A2789" font-size="13">Anti-spoof model</text><text x="14" y="54" fill="#3A4460">wav2vec-small-anti-deepfake</text><text x="14" y="69" fill="#3A4460">→ z = fake − real logit</text></g>
+        <g transform="translate(600,0)"><rect y="10" width="175" height="70" rx="12" fill="#fff" stroke="#D3CEC2"/><text x="14" y="36" font-weight="700" fill="#0E1630" font-size="13">Rolling evidence</text><text x="14" y="54" fill="#3A4460">4 s windows, 2 s stride,</text><text x="14" y="69" fill="#3A4460">median of last 3, latch</text></g>
+        <g transform="translate(805,0)"><rect y="10" width="170" height="70" rx="12" fill="#fff" stroke="#D3CEC2"/><text x="14" y="36" font-weight="700" fill="#0E1630" font-size="13">Policy engine</text><text x="14" y="54" fill="#3A4460">voice state × action</text><text x="14" y="69" fill="#3A4460">× app confirmation</text></g>
+        <g transform="translate(1005,0)"><rect y="10" width="145" height="70" rx="12" fill="#E3F4EC" stroke="#BFE3D2"/><text x="14" y="36" font-weight="700" fill="#0B8A5F" font-size="13">Outputs</text><text x="14" y="54" fill="#3A4460">agent prompt, app</text><text x="14" y="69" fill="#3A4460">challenge, analyst case</text></g>
+      </g>
+      <g stroke="#3A4460" stroke-width="1.6" marker-end="url(#ah)"><path d="M162 45h24"/><path d="M362 45h24"/><path d="M572 45h24"/><path d="M777 45h24"/><path d="M977 45h24"/></g>
+      <path d="M275 80 V96 H890 V82" fill="none" stroke="#6F7891" stroke-width="1.4" stroke-dasharray="4 4" marker-end="url(#ahm)"/>
+      <rect x="440" y="88" width="290" height="16" fill="#fff"/>
+      <text x="585" y="100" text-anchor="middle" font-size="11" font-weight="700" fill="#6F7891">insufficient audio → UNKNOWN (never "genuine")</text>
+    </svg>
+  </div>
+  <div class="row" style="margin-top:10px;gap:14px">
+    <div class="card" style="flex:1.15;padding:12px 16px">
+      <div style="display:flex;justify-content:space-between;align-items:baseline"><div class="h4">How the voice state evolves during a call</div><span class="chip gray">Illustrative until pilot results</span></div>
+      <svg viewBox="0 0 560 240" width="100%" height="232" aria-label="Rolling score chart">
+        <rect x="50" y="20" width="90" height="180" fill="#ECEEF3"/>
+        <text x="95" y="38" text-anchor="middle" font-size="11" font-weight="700" fill="#6F7891">UNKNOWN</text><text x="95" y="52" text-anchor="middle" font-size="10.5" fill="#6F7891">&lt;4 s speech</text>
+        <g stroke="#E2DED4" stroke-width="1"><path d="M50 20H500M50 65H500M50 155H500M50 200H500"/></g>
+        <path d="M50 110H500" stroke="#B9B4A8" stroke-width="1"/>
+        <path d="M50 76.25H500" stroke="#CF3434" stroke-width="1.4" stroke-dasharray="5 4"/>
+        <text x="504" y="80" font-size="11" fill="#CF3434" font-weight="700">alert</text>
+        <g font-size="11" fill="#6A7288" text-anchor="end"><text x="44" y="24">+4</text><text x="44" y="114">0</text><text x="44" y="204">−4</text></g>
+        <g font-size="11" fill="#6A7288" text-anchor="middle"><text x="50" y="218">0 s</text><text x="140" y="218">4</text><text x="230" y="218">8</text><text x="320" y="218">12</text><text x="410" y="218">16</text><text x="500" y="218">20 s</text></g>
+        <text x="275" y="236" text-anchor="middle" font-size="11" fill="#6A7288">seconds of caller speech</text>
+        <text transform="translate(14,110) rotate(-90)" text-anchor="middle" font-size="11" fill="#6A7288">score z (fake − real)</text>
+        <polyline fill="none" stroke="#0B8A5F" stroke-width="2.2" stroke-linejoin="round" points="140,150.5 185,159.5 230,143.75 275,155 320,137 365,152.75 410,146 455,157.25 500,148.25"/>
+        <polyline fill="none" stroke="#CF3434" stroke-width="2.2" stroke-linejoin="round" points="140,101 185,67.25 230,51.5 275,60.5 320,40.25 365,47 410,35.75 455,44.75 500,38"/>
+        <g fill="#CF3434" stroke="#fff" stroke-width="2"><circle cx="140" cy="101" r="4.5"/><circle cx="185" cy="67.25" r="4.5"/><circle cx="230" cy="51.5" r="5.5"/></g>
+        <g fill="#0B8A5F" stroke="#fff" stroke-width="2"><circle cx="140" cy="150.5" r="4.5"/><circle cx="185" cy="159.5" r="4.5"/><circle cx="230" cy="143.75" r="4.5"/></g>
+        <path d="M230 51.5 L262 24" stroke="#0E1630" stroke-width="1"/>
+        <text x="266" y="22" font-size="11.5" font-weight="700" fill="#0E1630">ELEVATED at ~8 s (median of 3, then latched)</text>
+        <text x="380" y="30" font-size="12" font-weight="700" fill="#CF3434" dy="40">Cloned caller</text>
+        <text x="380" y="175" font-size="12" font-weight="700" fill="#0B8A5F">Genuine caller</text>
+      </svg>
+    </div>
+    <div class="card" style="flex:1;padding:14px 16px">
+      <div class="h4" style="margin-bottom:8px">Decision policy for sensitive changes</div>
+      <table class="t" style="font-size:12px">
+        <tr><th>Voice state</th><th>App approves</th><th>Rejects / times out</th></tr>
+        <tr><td><span class="chip green">Not elevated</span></td><td>Eligible for normal bank checks</td><td>Cancel; offer callback</td></tr>
+        <tr><td><span class="chip gray">Unknown</span></td><td>Eligible; flag "no voice evidence"</td><td>Cancel; assisted recovery</td></tr>
+        <tr><td><span class="chip red">Elevated</span></td><td><b>Hold for analyst review</b> (possible coercion)</td><td><b>Cancel + priority case</b></td></tr>
+      </table>
+      <div class="h4" style="margin:12px 0 6px">Rules that override the model</div>
+      <ul class="dot">
+        <li>Action and <b>call context</b> (number match, SIM swap, repeats) come from bank systems.</li>
+        <li>The confirmation prompt starts <b>at once</b>. It never waits on the detector.</li>
+        <li>No freeze, blacklist or report from <b>a voice score alone</b>.</li>
+        <li><b>"Lost my phone" / no app:</b> call can only <b>protect</b> (block card, freeze). Re-register via branch, video-KYC or net banking + 24 h hold.</li>
+        <li>τ is set <b>per codec</b> on a speaker-disjoint dev split at 1% false alarms, then <b>frozen</b>.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+<!-- ================= PITCH 08 · DATA & VALIDATION ================= -->
+<section class="slide">
+  <div class="kicker"><span class="num">08</span>Validation plan &amp; first results</div>
+  <h2 class="t">We tested it on <em>phone-quality Hindi calls</em>, not clean lab clips.</h2>
+  <div class="row" style="margin-top:16px;gap:14px">
+    <div class="card" style="width:360px;padding:14px 16px">
+      <div class="h4" style="margin-bottom:10px">Our "Bharat-Phone" test set</div>
+      <div class="col" style="gap:0">
+        <div style="display:flex;gap:12px"><div style="display:flex;flex-direction:column;align-items:center"><span class="badge" style="width:30px;height:30px;border-radius:50%;font-weight:800;font-size:13px">1</span><span style="flex:1;width:2px;background:#C9CBFF"></span></div><div style="padding-bottom:10px"><b style="font-size:13.5px">Public Hindi data, real vs cloned</b><div class="s">Real Kathbath speech vs IndicSynth clones of the same speakers. Neither is in the model's training data.</div></div></div>
+        <div style="display:flex;gap:12px"><div style="display:flex;flex-direction:column;align-items:center"><span class="badge" style="width:30px;height:30px;border-radius:50%;font-weight:800;font-size:13px">2</span><span style="flex:1;width:2px;background:#C9CBFF"></span></div><div style="padding-bottom:10px"><b style="font-size:13.5px">2 clone types + our own voices</b><div class="s">XTTS-v2 voice-cloning TTS and FreeVC voice conversion, plus consented team recordings in Hindi, English and Hinglish.</div></div></div>
+        <div style="display:flex;gap:12px"><div style="display:flex;flex-direction:column;align-items:center"><span class="badge" style="width:30px;height:30px;border-radius:50%;font-weight:800;font-size:13px">3</span><span style="flex:1;width:2px;background:#C9CBFF"></span></div><div style="padding-bottom:10px"><b style="font-size:13.5px">Phone-channel stress</b><div class="s">8 kHz resample, G.711 / AMR-NB / Opus codecs, packet loss, noise, speakerphone replay.</div></div></div>
+        <div style="display:flex;gap:12px"><div><span class="badge" style="width:30px;height:30px;border-radius:50%;font-weight:800;font-size:13px">4</span></div><div><b style="font-size:13.5px">Leak-free splits</b><div class="s">Speaker- and session-disjoint before augmentation. Thresholds frozen before the test set is opened.</div></div></div>
+      </div>
+    </div>
+    <div class="card" style="flex:1;padding:14px 16px">
+      <div class="h4">Why the confirm layer is essential</div>
+      <div class="p" style="margin-top:2px;font-size:13px">Error rate (EER) of <b>wav2vec-small</b>, the exact model we run:</div>
+      <svg viewBox="0 0 400 189" width="100%" height="189" aria-label="EER bars">
+        <text x="0" y="11" font-size="10" font-weight="800" fill="#3F3BC4" letter-spacing=".08em">OUR TEST · HINDI, SPEAKER-DISJOINT</text><text x="0" y="30" font-size="11.5" fill="#0E1630">Clean 16 kHz</text><rect x="150" y="18" width="10.6" height="16" rx="3" fill="#0B8A5F"/><text x="166.6" y="30" font-size="11.5" font-weight="800" fill="#0E1630">1.6%</text><text x="0" y="51" font-size="11.5" fill="#0E1630">G.711 (8 kHz)</text><rect x="150" y="39" width="22.5" height="16" rx="3" fill="#0B8A5F"/><text x="178.5" y="51" font-size="11.5" font-weight="800" fill="#0E1630">3.4%</text><text x="0" y="72" font-size="11.5" fill="#0E1630">Opus 12k</text><rect x="150" y="60" width="39.1" height="16" rx="3" fill="#E8731C"/><text x="195.1" y="72" font-size="11.5" font-weight="800" fill="#0E1630">5.9%</text><text x="0" y="93" font-size="11.5" fill="#0E1630">AMR-NB 12.2k</text><rect x="150" y="81" width="56.4" height="16" rx="3" fill="#E8731C"/><text x="212.4" y="93" font-size="11.5" font-weight="800" fill="#0E1630">8.5%</text><text x="0" y="114" font-size="11.5" fill="#0E1630">G.711 + 3% loss + noise</text><rect x="150" y="102" width="143.9" height="16" rx="3" fill="#CF3434"/><text x="287.9" y="114" font-size="11.5" font-weight="800" fill="#fff" text-anchor="end">21.7%</text><text x="0" y="136" font-size="10" font-weight="800" fill="#6A7288" letter-spacing=".08em">PUBLISHED · CLEAN AUDIO</text><text x="0" y="155" font-size="11.5" fill="#0E1630">In-the-Wild</text><rect x="150" y="143" width="28.1" height="16" rx="3" fill="#9AA3C7"/><text x="184.1" y="155" font-size="11.5" font-weight="800" fill="#0E1630">4.2%</text><text x="0" y="176" font-size="11.5" fill="#0E1630">Deepfake-Eval-2024</text><rect x="150" y="164" width="221.0" height="16" rx="3" fill="#9AA3C7"/><text x="365.0" y="176" font-size="11.5" font-weight="800" fill="#fff" text-anchor="end">33.3%</text>
+      </svg>
+      <div class="p" style="font-size:12.5px;margin-top:2px">Phone codecs keep errors under 9%, but <b style="color:var(--danger)">packet loss + noise pushes it to 22%</b>. So τ is set <b>per codec</b>, poor audio is UNKNOWN, and app confirmation carries the safety guarantee.</div>
+      <div class="s" style="margin-top:4px">Ours: 960 test clips, 70 speakers. Kathbath real vs IndicSynth clones (XTTS-v2, FreeVC), call-level. Published: NII model card.</div>
+    </div>
+    <div class="card" style="width:330px;padding:14px 16px">
+      <div class="h4" style="margin-bottom:8px">What we found <span style="color:var(--brand)">· details in A·1–A·3</span></div>
+      <ul class="dot">
+        <li><b>1,727 clips × 6 channels</b> scored; 22 ms per window on a laptop GPU</li>
+        <li><b>τ must be per codec:</b> it moves from −2.27 (G.711) to +1.13 (clean)</li>
+        <li><b>XTTS-v2 clones are harder</b> than FreeVC on every channel</li>
+        <li>On our own voices: <b>1.7% false alarms clean, 16% on G.711</b>, so τ is re-set on each bank's calls in shadow mode</li>
+        <li><b>26/26 confirm-layer tests pass</b>: replay, tamper, expiry, wrong key</li>
+        <li><i>Still to measure:</i> UNKNOWN rate, time-to-alert, analyst load</li>
+      </ul>
+    </div>
+  </div>
+  <div class="card" style="margin-top:12px;padding:10px 16px">
+    <div style="display:grid;grid-template-columns:auto repeat(4,1fr);gap:14px;align-items:start">
+      <div class="h4" style="padding-top:2px">Key assumptions</div>
+      <div class="s"><b style="color:var(--ink)">A1 ·</b> Banks can fork call audio to an internal service (SIPREC is standard). <i>Validate with a contact-centre stakeholder.</i></div>
+      <div class="s"><b style="color:var(--ink)">A2 ·</b> Most customers have a registered app. Others go through a staffed callback on the registered number.</div>
+      <div class="s"><b style="color:var(--ink)">A3 ·</b> <i>Verified:</i> the model runs locally, 22 ms per 4 s window on a laptop GPU, 0.3 s on CPU.</div>
+      <div class="s"><b style="color:var(--ink)">A4 ·</b> <i>Measured:</i> loss + noise raises errors to 22%. The design stays safe because Layer 2 doesn't rely on audio.</div>
+    </div>
+  </div>
+  <div style="display:grid;grid-template-columns:auto 1fr 1fr 1fr;gap:12px;margin-top:12px;align-items:stretch">
+    <div class="callout" style="padding:10px 16px;font-size:13px;width:200px"><div><b>Done so far</b><br>and next</div></div>
+    <div class="card" style="padding:10px 14px;display:flex;gap:10px;align-items:center"><span class="badge" style="width:32px;height:32px;border-radius:9px"><svg class="ico" style="width:18px;height:18px"><use href="#i-cpu"/></svg></span><div class="s" style="color:var(--ink2)"><b style="color:var(--safe)">✓ Reproducible model run</b>: our PyTorch loader, checkpoint rev 9a13264, timed on named hardware</div></div>
+    <div class="card" style="padding:10px 14px;display:flex;gap:10px;align-items:center"><span class="badge" style="width:32px;height:32px;border-radius:9px"><svg class="ico" style="width:18px;height:18px"><use href="#i-scale"/></svg></span><div class="s" style="color:var(--ink2)"><b style="color:var(--safe)">✓ Results per channel</b>, with sample counts and 95% intervals, never a lone accuracy number</div></div>
+    <div class="card" style="padding:10px 14px;display:flex;gap:10px;align-items:center"><span class="badge" style="width:32px;height:32px;border-radius:9px"><svg class="ico" style="width:18px;height:18px"><use href="#i-clock"/></svg></span><div class="s" style="color:var(--ink2)"><b style="color:var(--accent)">Next · timed end-to-end demo</b>: live XTTS clone call to app rejection to analyst case</div></div>
+  </div>
+</section>
+<!-- ================= PITCH 09 · SAFETY ================= -->
+<section class="slide">
+  <div class="kicker"><span class="num">09</span>Privacy, security &amp; responsible AI</div>
+  <h2 class="t">If we're wrong, the customer gets a <em>verification step</em>, never an accusation.</h2>
+  <div class="row" style="margin-top:18px;gap:14px">
+    <div class="card" style="flex:1;padding:14px 16px">
+      <div style="display:flex;gap:10px;align-items:center"><span class="badge"><svg class="ico"><use href="#i-db"/></svg></span><div class="h3">Minimal data</div></div>
+      <div style="margin-top:12px;display:flex;flex-direction:column;gap:8px">
+        <div style="border-left:3px solid var(--brand);padding:2px 0 2px 10px"><div class="s" style="font-weight:800;letter-spacing:.06em">WE PROCESS</div><div class="p" style="font-size:13px"><b>Call audio:</b> a ≤16 s rolling buffer in memory, cleared when the call ends. Nothing new is archived.</div></div>
+        <div style="border-left:3px solid var(--brand);padding:2px 0 2px 10px"><div class="s" style="font-weight:800;letter-spacing:.06em">WE STORE (FLAGGED CASES ONLY)</div><div class="p" style="font-size:13px">Score timeline, reason codes, model version, approval status. Encrypted, 7-day TTL.</div></div>
+        <div style="border-left:3px solid var(--danger);padding:2px 0 2px 10px"><div class="s" style="font-weight:800;letter-spacing:.06em;color:var(--danger)">WE NEVER COLLECT</div><div class="p" style="font-size:13px">Voiceprints, transcripts, contacts, OTP / PIN / card data, or anything from the customer's phone.</div></div>
+      </div>
+    </div>
+    <div class="card" style="flex:1;padding:14px 16px">
+      <div style="display:flex;gap:10px;align-items:center"><span class="badge org"><svg class="ico"><use href="#i-scale"/></svg></span><div class="h3">When the model is wrong</div></div>
+      <div style="margin-top:12px;display:flex;flex-direction:column;gap:9px">
+        <div style="display:flex;gap:10px"><span class="chip red" style="flex:none;height:22px">False alarm</span><div class="p" style="font-size:13px">A genuine caller just approves in the app. The analyst releases with a reason. No freeze, no "fraud" label.</div></div>
+        <div style="display:flex;gap:10px"><span class="chip green" style="flex:none;height:22px">Missed clone</span><div class="p" style="font-size:13px">Still needs the real customer's app approval, so the change can't run.</div></div>
+        <div style="display:flex;gap:10px"><span class="chip gray" style="flex:none;height:22px">Unknown</span><div class="p" style="font-size:13px">Poor audio or a worker outage falls back to the normal secure route. It never fails open to "voice OK".</div></div>
+        <div style="display:flex;gap:10px"><span class="chip" style="flex:none;height:22px">Fairness</span><div class="p" style="font-size:13px">TTS and speech-impaired users take the same tap path, with no disability disclosure. False alarms audited per language, gender and channel.</div></div>
+      </div>
+    </div>
+    <div class="card" style="flex:1;padding:14px 16px">
+      <div style="display:flex;gap:10px;align-items:center"><span class="badge red"><svg class="ico"><use href="#i-key"/></svg></span><div class="h3">Misuse &amp; adversaries</div></div>
+      <ul class="ck" style="margin-top:12px">
+        <li><b>Adaptive attackers:</b> codec and noise augmentation; Layer 2 holds even if the model is beaten.</li>
+        <li><b>Replay / tampering:</b> nonce, action digest, 60 s expiry, single use.</li>
+        <li><b>Coached customers:</b> app asks "Is anyone on a call telling you to do this?" A yes goes to review. Contact and limit changes wait 24 h, with alerts and one-tap cancel.</li>
+        <li><b>Score forging:</b> only authenticated model workers can submit scores.</li>
+        <li><b>No surveillance:</b> no bulk API and no public cloning service. Consent-only test clones.</li>
+      </ul>
+    </div>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:14px">
+    <div class="card" style="padding:10px 16px;display:flex;align-items:center;gap:12px"><div class="disp" style="font-size:30px;font-weight:800;color:var(--brand);white-space:nowrap">0</div><div class="s" style="color:var(--ink2)"><b style="color:var(--ink)">voiceprints</b> enrolled or stored, ever</div></div>
+    <div class="card" style="padding:10px 16px;display:flex;align-items:center;gap:12px"><div class="disp" style="font-size:30px;font-weight:800;color:var(--brand);white-space:nowrap">≤16 s</div><div class="s" style="color:var(--ink2)"><b style="color:var(--ink)">of audio</b> held at once, in memory only</div></div>
+    <div class="card" style="padding:10px 16px;display:flex;align-items:center;gap:12px"><div class="disp" style="font-size:30px;font-weight:800;color:var(--brand);white-space:nowrap">7 days</div><div class="s" style="color:var(--ink2)"><b style="color:var(--ink)">max retention</b> for flagged-case evidence (pilot default)</div></div>
+    <div class="card" style="padding:10px 16px;display:flex;align-items:center;gap:12px"><div class="disp" style="font-size:30px;font-weight:800;color:var(--brand);white-space:nowrap">0</div><div class="s" style="color:var(--ink2)"><b style="color:var(--ink)">automatic freezes</b> or reports from a voice score</div></div>
+  </div>
+  <div class="callout" style="margin-top:12px"><svg class="ico" style="color:#FFC48F"><use href="#i-user"/></svg><div>A human decides before any high-impact action, and <b>the bank stays the authoriser</b>. EchoLock only recommends. Not solved by design: malware on a stolen unlocked phone, or a compromised bank core.</div></div>
+</section>
+<!-- ================= PITCH 10 · DEPLOYMENT & 48H ================= -->
+<section class="slide">
+  <div class="kicker"><span class="num">10</span>Deployment pathway &amp; 48-hour plan</div>
+  <h2 class="t">From a 48-hour demo to a <em>bank shadow pilot</em>, without touching customers until it's proven.</h2>
+  <div class="card" style="margin-top:16px;padding:14px 18px">
+    <svg viewBox="0 0 1140 92" width="100%" height="92" aria-label="Rollout roadmap">
+      <path d="M20 22 H1120" stroke="#E2DED4" stroke-width="4" stroke-linecap="round"/>
+      <path d="M20 22 H300" stroke="#3F3BC4" stroke-width="4" stroke-linecap="round"/>
+      <g font-size="12">
+        <g><circle cx="40" cy="22" r="11" fill="#3F3BC4"/><text x="40" y="26.5" fill="#fff" text-anchor="middle" font-weight="800" font-size="11">1</text><text x="20" y="56" font-weight="700" font-size="13.5" fill="#0E1630">48-h prototype</text><text x="20" y="74" fill="#3A4460">consented audio, mock CRM + app</text></g>
+        <g transform="translate(290,0)"><circle cx="40" cy="22" r="11" fill="#fff" stroke="#3F3BC4" stroke-width="2.5"/><text x="40" y="26.5" fill="#3F3BC4" text-anchor="middle" font-weight="800" font-size="11">2</text><text x="20" y="56" font-weight="700" font-size="13.5" fill="#0E1630">Shadow mode, one queue</text><text x="20" y="74" fill="#3A4460">scores logged, no customer impact</text></g>
+        <g transform="translate(580,0)"><circle cx="40" cy="22" r="11" fill="#fff" stroke="#3F3BC4" stroke-width="2.5"/><text x="40" y="26.5" fill="#3F3BC4" text-anchor="middle" font-weight="800" font-size="11">3</text><text x="20" y="56" font-weight="700" font-size="13.5" fill="#0E1630">Agent assist + app confirm</text><text x="20" y="74" fill="#3A4460">staffed recovery, measured friction</text></g>
+        <g transform="translate(870,0)"><circle cx="40" cy="22" r="11" fill="#fff" stroke="#3F3BC4" stroke-width="2.5"/><text x="40" y="26.5" fill="#3F3BC4" text-anchor="middle" font-weight="800" font-size="11">4</text><text x="20" y="56" font-weight="700" font-size="13.5" fill="#0E1630">All sensitive queues</text><text x="20" y="74" fill="#3A4460">licensed model, drift monitoring</text></g>
+      </g>
+    </svg>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:4px">
+      <div class="s"><b style="color:var(--ink)">Owner:</b> contact-centre operations with fraud-risk and infosec teams.</div>
+      <div class="s"><b style="color:var(--ink)">Integration:</b> SIPREC/WebRTC audio fork · REST policy API · CRM agent widget · push SDK in the existing bank app.</div>
+      <div class="s"><b style="color:var(--ink)">Operational load:</b> about 1 MB RAM per live call. Overload returns UNKNOWN, never voice-only approval. Model rollback keeps bank auth intact.</div>
+    </div>
+  </div>
+  <div class="row" style="margin-top:12px;gap:14px">
+    <div class="card" style="flex:1.35;padding:14px 18px">
+      <div class="h4" style="margin-bottom:6px">48-hour finale build</div>
+      <svg viewBox="0 0 640 200" width="100%" height="200" aria-label="48 hour plan">
+        <g font-size="11" fill="#6A7288" text-anchor="middle"><text x="200" y="12">0 h</text><text x="273" y="12">12</text><text x="347" y="12">24</text><text x="420" y="12">36</text><text x="493" y="12">48</text></g>
+        <g stroke="#E2DED4"><path d="M200 18V196M273 18V196M347 18V196M420 18V196M493 18V196"/></g>
+        <g font-size="12" fill="#0E1630">
+          <text x="0" y="40">Model go / no-go <tspan fill="#0B8A5F" font-weight="800">✓ done</tspan></text><rect x="200" y="28" width="36.7" height="18" rx="4" fill="#0B8A5F"/>
+          <text x="0" y="68">Audio stream + quality gate</text><rect x="238.7" y="56" width="47" height="18" rx="4" fill="#3F3BC4"/>
+          <text x="0" y="96">CRM action + app confirm</text><rect x="287.7" y="84" width="59" height="18" rx="4" fill="#3F3BC4"/>
+          <text x="0" y="124">Frozen eval + attack tests <tspan fill="#0B8A5F" font-weight="800">✓ Hindi</tspan></text><rect x="349" y="112" width="59" height="18" rx="4" fill="#E8731C"/>
+          <text x="0" y="152">Measure, UX, demo video</text><rect x="410" y="140" width="47" height="18" rx="4" fill="#E8731C"/>
+          <text x="0" y="180">Freeze + rehearse</text><rect x="459" y="168" width="34" height="18" rx="4" fill="#6F7891"/>
+        </g>
+        <g fill="#0E1630" font-size="10.5" font-weight="700">
+          <path d="M236.7 22v-4" stroke="#0E1630"/><text x="520" y="40" text-anchor="start" font-weight="400" fill="#3A4460">◆ h6 model works? ✓</text>
+          <text x="520" y="96" text-anchor="start" font-weight="400" fill="#3A4460">◆ h24 end-to-end</text>
+          <text x="520" y="152" text-anchor="start" font-weight="400" fill="#3A4460">◆ h42 code freeze</text>
+        </g>
+      </svg>
+    </div>
+    <div class="card" style="flex:1;padding:14px 18px">
+      <div class="h4" style="margin-bottom:8px">Live demo we'll show judges</div>
+      <ol style="padding-left:18px;font-size:13px;line-height:1.5;color:var(--ink2)">
+        <li>A consented clone calls and asks to <b>change the registered mobile</b></li>
+        <li>The agent screen goes <b style="color:var(--danger)">ELEVATED</b> in about 8 s</li>
+        <li>The phone app shows the exact change. <b>Reject</b> → cancelled, case opened</li>
+        <li>The genuine speaker approves in one tap. A TTS user gets no penalty</li>
+        <li>A replayed or tampered approval is <b>refused</b></li>
+      </ol>
+      <div class="h4" style="margin:10px 0 6px">Cut line if hours slip</div>
+      <div style="display:flex;flex-wrap:wrap;gap:5px;align-items:center">
+        <span class="chip green">Keep: detector on recorded clips</span><span class="chip green">Keep: action hold + app confirm</span><span class="chip green">Keep: analyst view + replay test</span>
+        <span class="chip red">Drop 1st: live WebRTC</span><span class="chip red">2nd: UI polish</span><span class="chip red">3rd: extra codec sweeps</span>
+      </div>
+    </div>
+  </div>
+  <div class="row" style="margin-top:12px;gap:14px">
+    <div class="card" style="flex:1;padding:10px 16px;display:flex;gap:12px;align-items:center"><span class="badge green" style="width:34px;height:34px;border-radius:10px"><svg class="ico" style="width:18px;height:18px"><use href="#i-cpu"/></svg></span><div class="s" style="color:var(--ink2)"><b style="color:var(--ink)">Hackathon cost: about ₹0.</b> Open-source model and tools on our own laptops. Roles: ML &amp; data · backend &amp; security · frontend &amp; media · validation &amp; product.</div></div>
+    <div class="card" style="flex:1.3;padding:10px 16px;display:flex;gap:12px;align-items:center"><span class="badge org" style="width:34px;height:34px;border-radius:10px"><svg class="ico" style="width:18px;height:18px"><use href="#i-building"/></svg></span><div class="s" style="color:var(--ink2)"><b style="color:var(--ink)">Pilot cost estimate:</b> only calls with a sensitive request are scored, so cost scales with those calls, not all traffic. We expect one 8-vCPU server (about ₹20–25k/month on-demand cloud) to cover a pilot queue. <i>Assumption, to be measured in shadow mode.</i></div></div>
+  </div>
+</section>
+</body>
+</html>
