@@ -1,0 +1,52 @@
+# Superseded work, local only
+_old/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.uvcache/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Node
+node_modules/
+npm-debug.log*
+prototype/.local/
+
+# Model cache, downloaded datasets, run logs
+eval/.hf/
+eval/data/
+eval/*.log
+*.parquet
+*.safetensors
+*.ckpt
+*.pt
+
+# Audio: only the consented team recordings are tracked
+*.wav
+*.m4a
+*.mp3
+*.flac
+!data_collection/raw/S0*/*.wav
+*.zip
+
+# Third-party page snapshots and the organisers' brief stay local
+research/
+*participant-brief*
+description.txt
+
+# Editors and OS
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Secrets
+.env
+.env.*
+*.pem
+*.key
